@@ -1,5 +1,5 @@
 import streamlit as st
-
+from services.ai_service import generate_health_prediction
 from database.db import SessionLocal
 from database.models import Patient
 
@@ -50,7 +50,11 @@ if st.button("Save Patient"):
             glucose=glucose,
             haemoglobin=haemoglobin,
             cholesterol=cholesterol,
-            remarks="Pending AI Analysis"
+            remarks = generate_health_prediction(
+                    glucose,
+                    haemoglobin,
+                    cholesterol
+            )
         )
 
         db.add(patient)
