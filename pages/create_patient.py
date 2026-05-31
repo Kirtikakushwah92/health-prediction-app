@@ -2,7 +2,7 @@ import streamlit as st
 from services.ai_service import generate_health_prediction
 from database.db import SessionLocal
 from database.models import Patient
-
+from datetime import date
 from services.validation import (
     validate_email,
     validate_dob
@@ -12,7 +12,11 @@ st.title("➕ Create Patient")
 
 full_name = st.text_input("Full Name")
 
-dob = st.date_input("Date of Birth")
+dob = st.date_input("Date of Birth",
+                        value=date(2000, 1, 1),
+                        min_value=date(1900, 1, 1),
+                        max_value=date.today()
+                    )
 
 email = st.text_input("Email Address")
 

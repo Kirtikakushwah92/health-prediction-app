@@ -149,3 +149,4 @@ streamlit run app.py
 
 Kirtika Kushwah
 B.Tech Computer Science Graduate
+Software developer engineer internship(completed)
